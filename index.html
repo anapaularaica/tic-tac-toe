@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Velha</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="css/style.css"> <!-- Link para o CSS separado -->
+</head>
+<body>
+    <div class="container">
+        <h1 class="animate__animated animate__bounce" style="color: #5D4037;">
+            <img src="https://imagensemoldes.com.br/wp-content/uploads/2019/12/Ursinho-Marrom-PNG-40.png" alt="Logo" style="width: 50px; vertical-align: middle; margin-right: 10px;">
+            X's and O's Showdown!
+        </h1>
+        
+        <p style="font-weight: bold; margin-top: 20px; color: #5D4037;">Let’s go, who doesn't love a little game? Let’s see who’s gonna be the loser this time! Get ready to lose!</p>
+
+        <div id="game-board" class="mt-4">
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+        </div>
+        
+        <button id="reset-button" class="btn mt-4">Reiniciar Jogo</button>
+    </div>
+    <script src="javascript/script.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

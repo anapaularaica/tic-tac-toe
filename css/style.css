@@ -1,0 +1,51 @@
+body {
+    background-color: #D7CCC8; /* Cor de fundo em tom de marrom claro */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    height: 100vh; /* Altura total da viewport */
+    margin: 0;
+    font-family: 'Poppins', sans-serif; /* Fonte personalizada */
+}
+
+.container {
+    text-align: center; /* Centraliza o texto dentro do container */
+    z-index: 1; /* Garante que o conteúdo esteja acima da imagem */
+    margin-top: 20px; /* Espaço superior para melhorar a aparência */
+    color: #5D4037; /* Cor do texto marrom escuro */
+}
+
+#game-board {
+    display: grid; /* Usar grid para o tabuleiro */
+    grid-template-columns: repeat(3, 120px); /* Define 3 colunas */
+    gap: 10px; /* Espaço entre as células */
+    margin: 20px auto; /* Centraliza o tabuleiro horizontalmente */
+}
+
+.cell {
+    width: 120px; /* Ajuste a largura da célula */
+    height: 120px; /* Ajuste a altura da célula */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em; /* Tamanho da fonte do símbolo */
+    cursor: pointer;
+    background-color: rgba(222, 184, 135, 0.8); /* Cor de fundo das células em bege claro com transparência */
+    border: 2px solid #8D6E63; /* Borda das células em marrom médio */
+    transition: background-color 0.3s; /* Transição suave */
+}
+
+.cell:hover {
+    background-color: rgba(210, 180, 140, 0.8); /* Muda a cor ao passar o mouse para um tom de bege mais escuro */
+}
+
+#reset-button {
+    background-color: rgba(160, 82, 45, 0.8); /* Cor do botão marrom */
+    color: #ffffff; /* Cor do texto do botão */
+    transition: background-color 0.3s; /* Transição suave */
+}
+
+#reset-button:hover {
+    background-color: rgba(139, 69, 19, 0.8); /* Muda a cor ao passar o mouse para um marrom mais escuro */
+}
