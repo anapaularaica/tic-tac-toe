@@ -1,51 +1,102 @@
-body {
-    background-color: #D7CCC8; /* Define a cor de fundo do corpo como um tom de marrom claro */
-    display: flex; /* Usa flexbox para o layout do corpo */
-    flex-direction: column; /* Organiza os filhos em uma coluna */
-    justify-content: center; /* Centraliza os filhos verticalmente */
-    align-items: center; /* Centraliza os filhos horizontalmente */
-    height: 100vh; /* Define a altura do corpo como 100% da altura da viewport */
-    margin: 0; /* Remove margens padrão do corpo */
-    font-family: 'Poppins', sans-serif; /* Aplica a fonte Poppins ao texto */
+const cells = document.querySelectorAll('.cell');
+// Seleciona todas as células do tabuleiro usando a classe 'cell' e armazena em uma NodeList.
+
+const resetButton = document.getElementById('reset-button');
+// Seleciona o botão de reinício do jogo pelo seu ID.
+
+let currentPlayer = 'X';
+// Define o jogador atual como 'X'.
+
+let gameState = ['', '', '', '', '', '', '', '', ''];
+// Inicializa o estado do jogo com um array vazio, representando as células do tabuleiro.
+
+let isGameActive = true;
+// Define se o jogo está ativo (verdadeiro significa que o jogo pode continuar).
+
+// Função para verificar se houve vencedor
+function checkWinner() {
+    const winningConditions = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ];
+    // Define as condições de vitória (combinações que levam à vitória).
+
+    for (let condition of winningConditions) {
+        const [a, b, c] = condition;
+        // Desestruturação das posições da condição de vitória.
+
+        if (gameState[a] && gameState[a] === gameState[b] && gameState[a] === gameState[c]) {
+            // Verifica se as células estão preenchidas pelo mesmo jogador.
+            alert(`Jogador ${gameState[a]} venceu!`);
+            // Exibe um alerta informando qual jogador venceu.
+            isGameActive = false;
+            // Define o jogo como inativo.
+            return;
+        }
+    }
+
+    if (!gameState.includes('')) {
+        // Verifica se não há células vazias no estado do jogo.
+        alert('Empate!');
+        // Exibe um alerta informando que o jogo terminou em empate.
+        isGameActive = false;
+    }
 }
 
-.container {
-    text-align: center; /* Centraliza o texto dentro do contêiner */
-    z-index: 1; /* Define a camada do contêiner acima de outros elementos */
-    margin-top: 20px; /* Adiciona um espaço acima do contêiner */
-    color: #5D4037; /* Define a cor do texto como um marrom escuro */
+// Função para lidar com o clique nas células
+function handleCellClick(event) {
+    const cell = event.target;
+    // Captura a célula que foi clicada.
+
+    const index = cell.getAttribute('data-index');
+    // Obtém o índice da célula clicada a partir do atributo 'data-index'.
+
+    if (gameState[index] !== '' || !isGameActive) {
+        // Verifica se a célula já está preenchida ou se o jogo não está ativo.
+        return; // Se sim, não faz nada.
+    }
+
+    gameState[index] = currentPlayer;
+    // Atualiza o estado do jogo com o jogador atual na célula correspondente.
+    
+    cell.textContent = currentPlayer; 
+    // Atualiza o conteúdo da célula para mostrar 'X' ou 'O'.
+
+    checkWinner();
+    // Chama a função para verificar se há um vencedor após a jogada.
+
+    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    // Alterna o jogador atual entre 'X' e 'O'.
 }
 
-#game-board {
-    display: grid; /* Usa grid para o layout do tabuleiro */
-    grid-template-columns: repeat(3, 120px); /* Cria 3 colunas de 120px cada */
-    gap: 10px; /* Define um espaço de 10px entre as células do tabuleiro */
-    margin: 20px auto; /* Centraliza o tabuleiro horizontalmente com uma margem superior de 20px */
+// Função para reiniciar o jogo
+function resetGame() {
+    gameState = ['', '', '', '', '', '', '', '', ''];
+    // Reseta o estado do jogo para células vazias.
+
+    isGameActive = true;
+    // Define que o jogo está ativo novamente.
+
+    currentPlayer = 'X';
+    // Reinicia o jogador atual para 'X'.
+
+    cells.forEach(cell => {
+        cell.textContent = '';
+        // Limpa o conteúdo de todas as células no tabuleiro.
+    });
 }
 
-.cell {
-    width: 120px; /* Define a largura de cada célula como 120px */
-    height: 120px; /* Define a altura de cada célula como 120px */
-    display: flex; /* Usa flexbox para o layout das células */
-    justify-content: center; /* Centraliza o conteúdo horizontalmente na célula */
-    align-items: center; /* Centraliza o conteúdo verticalmente na célula */
-    font-size: 2.5em; /* Define o tamanho da fonte dentro das células */
-    cursor: pointer; /* Muda o cursor para indicar que a célula é clicável */
-    background-color: rgba(222, 184, 135, 0.8); /* Define a cor de fundo das células como um bege claro com transparência */
-    border: 2px solid #8D6E63; /* Define a borda das células com uma cor marrom médio */
-    transition: background-color 0.3s; /* Define uma transição suave para a cor de fundo */
-}
+// Adicionando event listeners
+cells.forEach(cell => {
+    cell.addEventListener('click', handleCellClick);
+    // Adiciona um evento de clique a cada célula que chama a função handleCellClick.
+});
 
-.cell:hover {
-    background-color: rgba(210, 180, 140, 0.8); /* Muda a cor de fundo das células para um tom de bege mais escuro quando o mouse passa por cima */
-}
-
-#reset-button {
-    background-color: rgba(160, 82, 45, 0.8); /* Define a cor de fundo do botão de reinício como marrom */
-    color: #ffffff; /* Define a cor do texto do botão como branco */
-    transition: background-color 0.3s; /* Define uma transição suave para a cor de fundo do botão */
-}
-
-#reset-button:hover {
-    background-color: rgba(139, 69, 19, 0.8); /* Muda a cor de fundo do botão para um marrom mais escuro quando o mouse passa por cima */
-}
+resetButton.addEventListener('click', resetGame); 
+// Adiciona um evento de clique ao botão de reinício que chama a função resetGame.
