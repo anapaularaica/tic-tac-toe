@@ -1,27 +1,50 @@
 <!DOCTYPE html>
+<!-- Declara o tipo de documento como HTML5 -->
 <html lang="pt-BR">
+<!-- Define a linguagem do documento como português do Brasil -->
 <head>
     <meta charset="UTF-8">
+    <!-- Define a codificação de caracteres como UTF-8 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Define como a página deve ser exibida em dispositivos móveis -->
     <title>Jogo da Velha</title>
+    <!-- Define o título da página que aparece na aba do navegador -->
+    
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Importa a fonte Poppins do Google Fonts -->
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Adiciona o CSS do Bootstrap para estilização rápida e responsiva -->
+    
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="css/style.css"> <!-- Link para o CSS separado -->
+    <!-- Adiciona animações pré-definidas com Animate.css -->
+    
+    <link rel="stylesheet" href="css/style.css"> 
+    <!-- Link para um arquivo CSS separado onde você pode adicionar suas próprias estilos -->
 </head>
 <body>
     <div class="container">
-        <h1 class="animate__animated animate__bounce" style="color: #5D4037;">
+    <!-- Cria um contêiner Bootstrap para centralizar o conteúdo -->
+        
+        <h1 class="animate_animated animate_bounce" style="color: #5D4037;">
+        <!-- Título principal do jogo, com animação de "bounce" e cor específica -->
             <img src="https://imagensemoldes.com.br/wp-content/uploads/2019/12/Ursinho-Marrom-PNG-40.png" alt="Logo" style="width: 50px; vertical-align: middle; margin-right: 10px;">
+            <!-- Imagem da logo do jogo com um tamanho definido e alinhamento vertical -->
             X's and O's Showdown!
+            <!-- Texto do título -->
         </h1>
         
-        <p style="font-weight: bold; margin-top: 20px; color: #5D4037;">Let’s go, who doesn't love a little game? Let’s see who’s gonna be the loser this time! Get ready to lose!</p>
+        <p style="font-weight: bold; margin-top: 20px; color: #5D4037;">
+        <!-- Parágrafo que descreve o jogo, com peso de fonte e cor específica -->
+            Let’s go, who doesn't love a little game? Let’s see who’s gonna be the loser this time! Get ready to lose!
+            <!-- Texto da descrição do jogo -->
+        </p>
 
         <div id="game-board" class="mt-4">
+        <!-- Div que serve como o tabuleiro do jogo, com margem superior -->
             <div class="cell" data-index="0"></div>
             <div class="cell" data-index="1"></div>
             <div class="cell" data-index="2"></div>
@@ -31,14 +54,22 @@
             <div class="cell" data-index="6"></div>
             <div class="cell" data-index="7"></div>
             <div class="cell" data-index="8"></div>
+            <!-- Cada célula do tabuleiro do jogo, com um índice de dados para identificação -->
         </div>
         
         <button id="reset-button" class="btn mt-4">Reiniciar Jogo</button>
+        <!-- Botão para reiniciar o jogo, com margem superior -->
     </div>
+    
     <script src="javascript/script.js"></script>
+    <!-- Link para o arquivo JavaScript onde a lógica do jogo está implementada -->
+    
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Importa a biblioteca jQuery para funcionalidades do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <!-- Importa Popper.js, necessário para alguns componentes do Bootstrap -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Importa o JavaScript do Bootstrap -->
 </body>
 </html>
